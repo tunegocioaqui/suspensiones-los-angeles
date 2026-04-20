@@ -1,1182 +1,1145 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suspensiones Los Ángeles – Querétaro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suspensiones Los Ángeles – Santiago de Querétaro</title>
+  <meta name="description" content="Suspensiones Los Ángeles en El Romerillal, Querétaro. Alineación, balanceo, frenos y suspensión. Especialistas con experiencia y trabajo garantizado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ─── RESET & BASE ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --dark:        #0f0f0f;
-      --dark-2:      #181818;
-      --dark-3:      #222222;
-      --red:         #e02020;
-      --red-light:   #ff4040;
-      --red-dark:    #b01818;
-      --white:       #ffffff;
-      --gray-50:     #f7f7f7;
-      --gray-100:    #efefef;
-      --gray-300:    #cccccc;
-      --gray-500:    #888888;
-      --gray-700:    #444444;
-      --radius:      12px;
-      --shadow:      0 4px 24px rgba(0,0,0,.14);
-      --shadow-lg:   0 8px 48px rgba(0,0,0,.22);
-      --transition:  .3s ease;
+      --red:         #E02020;
+      --red-dark:    #B81818;
+      --red-light:   #FF3C3C;
+      --red-glow:    rgba(224,32,32,0.15);
+      --black:       #080808;
+      --dark:        #111111;
+      --dark2:       #171717;
+      --dark3:       #1F1F1F;
+      --steel:       #2A2A2A;
+      --gray:        #888;
+      --gray-light:  #333;
+      --white:       #FFFFFF;
+      --offwhite:    #F5F5F5;
+      --green-wapp:  #25D366;
+      --condensed:   'Barlow Condensed', Impact, sans-serif;
+      --sans:        'Inter', system-ui, sans-serif;
+      --nav-h:       68px;
+      --ease:        cubic-bezier(0.4,0,0.2,1);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--gray-700); background: var(--white); overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
-    img { display: block; width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    /* ─── UTILITIES ────────────────────────────────────────────── */
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: 96px 0; }
-    .section-tag {
-      display: inline-block;
-      background: rgba(224,32,32,.1);
-      color: var(--red);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 16px;
-    }
-    .section-title { font-size: clamp(1.9rem, 4vw, 2.75rem); color: var(--dark); line-height: 1.2; margin-bottom: 16px; }
-    .section-subtitle { font-size: 1.05rem; color: var(--gray-500); max-width: 560px; line-height: 1.7; }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-header .section-subtitle { margin: 0 auto; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: .95rem;
-      cursor: pointer;
-      border: none;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--red); color: var(--white); box-shadow: 0 4px 20px rgba(224,32,32,.35); }
-    .btn-primary:hover { background: var(--red-dark); box-shadow: 0 8px 32px rgba(224,32,32,.5); }
-    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.35); }
-    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
-    .btn-whatsapp { background: #25D366; color: var(--white); box-shadow: 0 4px 20px rgba(37,211,102,.35); }
-    .btn-whatsapp:hover { background: #1ebe5b; box-shadow: 0 8px 32px rgba(37,211,102,.5); }
-    .btn-dark { background: var(--dark); color: var(--white); }
-    .btn-dark:hover { background: var(--dark-3); }
-
-    /* ─── REVEAL ───────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─── NAVBAR ───────────────────────────────────────────────── */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 20px 0;
-      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
-    }
-    #navbar.scrolled {
-      background: rgba(15,15,15,.97);
-      backdrop-filter: blur(12px);
-      padding: 12px 0;
-      box-shadow: 0 2px 24px rgba(0,0,0,.5);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { display: flex; align-items: center; gap: 12px; font-family: 'Poppins', sans-serif; font-weight: 700; }
-    .nav-logo-icon {
-      width: 40px; height: 40px;
-      background: var(--red);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .nav-logo-text { line-height: 1.1; }
-    .nav-logo-text span:first-child { display: block; color: var(--white); font-size: 1rem; font-weight: 800; }
-    .nav-logo-text span:last-child { display: block; color: rgba(255,255,255,.45); font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a {
-      color: rgba(255,255,255,.75);
-      font-size: .9rem;
-      font-weight: 500;
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--red-light); transition: width var(--transition); }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta { margin-left: 8px; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 4px; transition: transform var(--transition), opacity var(--transition); }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
+    body {
+      font-family: var(--sans);
       background: var(--dark);
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      padding: 24px;
-      z-index: 999;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      opacity: 0;
-      transform: translateY(-12px);
-      transition: transform var(--transition), opacity var(--transition);
-    }
-    .mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; }
-    .mobile-menu a { color: rgba(255,255,255,.8); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); font-weight: 500; font-size: .95rem; }
-    .mobile-menu a:last-child { border: none; }
-
-    /* ─── HERO ─────────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a0606 55%, #0f0f0f 100%);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,32,32,.18) 0%, transparent 68%);
-      top: -250px; right: -250px;
-      pointer-events: none;
-    }
-    #hero::after {
-      content: '';
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,32,32,.1) 0%, transparent 70%);
-      bottom: -150px; left: -100px;
-      pointer-events: none;
-    }
-    /* Subtle gear/texture overlay */
-    .hero-texture {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 64px;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(224,32,32,.15);
-      border: 1px solid rgba(224,32,32,.35);
-      color: var(--red-light);
-      font-size: .8rem;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .hero-title { font-size: clamp(2.6rem, 5vw, 3.8rem); color: var(--white); line-height: 1.12; margin-bottom: 20px; }
-    .hero-title span { color: var(--red-light); }
-    .hero-subtitle { font-size: 1.1rem; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 40px; max-width: 480px; }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); flex-wrap: wrap; }
-    .hero-stat-number { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--white); }
-    .hero-stat-number span { color: var(--red-light); }
-    .hero-stat-label { font-size: .82rem; color: rgba(255,255,255,.45); margin-top: 2px; }
-    .hero-visual { position: relative; }
-    .hero-card {
-      background: rgba(255,255,255,.05);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 20px;
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), var(--red-light));
-    }
-    .hero-services-list { display: flex; flex-direction: column; gap: 14px; }
-    .hero-service-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 10px;
-      transition: background var(--transition), border-color var(--transition);
-    }
-    .hero-service-item:hover { background: rgba(224,32,32,.1); border-color: rgba(224,32,32,.3); }
-    .hero-service-icon { width: 36px; height: 36px; background: rgba(224,32,32,.2); border-radius: 8px; display: grid; place-items: center; color: var(--red-light); font-size: .9rem; flex-shrink: 0; }
-    .hero-service-name { color: var(--white); font-size: .9rem; font-weight: 600; }
-    .hero-service-sub { color: rgba(255,255,255,.4); font-size: .78rem; }
-    .hero-pill {
-      position: absolute;
-      background: var(--red);
-      color: #fff;
-      font-size: .78rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 20px rgba(224,32,32,.5);
-      white-space: nowrap;
-    }
-    .pill-1 { top: -18px; right: 24px; }
-    .pill-2 { bottom: -18px; left: 24px; }
-
-    /* ─── ABOUT ────────────────────────────────────────────────── */
-    #about { background: var(--gray-50); }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-visual {
-      position: relative;
-      background: var(--dark);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      min-height: 460px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 36px;
-    }
-    .about-visual-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a0606 0%, #0f0f0f 100%);
-    }
-    .about-visual-grid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-    .about-visual-glow {
-      position: absolute;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,32,32,.25) 0%, transparent 70%);
-      top: -80px; right: -80px;
-    }
-    .about-icon-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-    .about-icon-item {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 12px;
-      padding: 20px 16px;
-      text-align: center;
-    }
-    .about-icon-item i { font-size: 1.8rem; color: var(--red-light); margin-bottom: 8px; display: block; }
-    .about-icon-item span { color: rgba(255,255,255,.6); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
-    .about-badge-card {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--red);
-      border-radius: 14px;
-      padding: 20px 24px;
-      box-shadow: 0 8px 32px rgba(224,32,32,.4);
-    }
-    .about-badge-num { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 900; color: #fff; line-height: 1; }
-    .about-badge-text { color: rgba(255,255,255,.85); font-size: .88rem; line-height: 1.5; }
-    .about-text .section-subtitle { margin-bottom: 24px; }
-    .about-checks { margin: 32px 0; }
-    .about-check { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
-    .check-icon { width: 30px; height: 30px; min-width: 30px; background: rgba(224,32,32,.1); color: var(--red); border-radius: 8px; display: grid; place-items: center; font-size: .75rem; }
-    .check-text strong { display: block; font-size: .95rem; color: var(--dark); margin-bottom: 2px; }
-    .check-text span { font-size: .88rem; color: var(--gray-500); }
-
-    /* ─── SERVICES ─────────────────────────────────────────────── */
-    #services { background: var(--white); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .service-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red), var(--red-light));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
-    }
-    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: rgba(224,32,32,.2); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-icon {
-      width: 58px; height: 58px;
-      background: rgba(224,32,32,.08);
-      color: var(--red);
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      margin-bottom: 24px;
-      transition: background var(--transition), color var(--transition);
-    }
-    .service-card:hover .service-icon { background: var(--red); color: var(--white); }
-    .service-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 12px; }
-    .service-card p { font-size: .9rem; color: var(--gray-500); line-height: 1.7; }
-    /* 5th card centered */
-    .services-grid .service-card:nth-child(4) { grid-column: 1; }
-    .services-grid .service-card:nth-child(5) { grid-column: 3; }
-
-    /* ─── STATS BAND ───────────────────────────────────────────── */
-    #stats { background: var(--dark); }
-    .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
-    .stat-item { padding: 56px 20px; border-right: 1px solid rgba(255,255,255,.07); }
-    .stat-item:last-child { border: none; }
-    .stat-num { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 900; color: var(--white); line-height: 1; }
-    .stat-num span { color: var(--red-light); }
-    .stat-label { margin-top: 10px; font-size: .88rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .08em; }
-
-    /* ─── TESTIMONIALS ─────────────────────────────────────────── */
-    #testimonials { background: var(--gray-50); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      position: relative;
-      transition: transform var(--transition), box-shadow var(--transition);
-      border: 1px solid var(--gray-100);
-    }
-    .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .testimonial-card::before { content: '\201C'; position: absolute; top: 14px; right: 22px; font-family: Georgia, serif; font-size: 5rem; color: rgba(224,32,32,.12); line-height: 1; }
-    .stars { color: #f59e0b; font-size: .9rem; margin-bottom: 20px; }
-    .testimonial-text { font-size: .95rem; color: var(--gray-500); line-height: 1.75; margin-bottom: 28px; }
-    .testimonial-author { display: flex; align-items: center; gap: 14px; }
-    .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--red); display: grid; place-items: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff; flex-shrink: 0; }
-    .author-name { font-weight: 600; color: var(--dark); font-size: .95rem; }
-    .author-role { font-size: .82rem; color: var(--gray-500); }
-
-    /* ─── FAQ ──────────────────────────────────────────────────── */
-    #faq { background: var(--white); }
-    .faq-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
-    .faq-info .section-subtitle { margin-bottom: 32px; }
-    .faq-contact-card {
-      background: var(--dark);
-      border-radius: 16px;
-      padding: 32px;
-      margin-top: 36px;
-    }
-    .faq-contact-card p { color: rgba(255,255,255,.55); font-size: .9rem; line-height: 1.6; margin-bottom: 20px; }
-    .faq-list { display: flex; flex-direction: column; gap: 14px; }
-    .faq-item { border: 1px solid var(--gray-100); border-radius: 10px; overflow: hidden; }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 20px 24px;
-      text-align: left;
-      font-size: .97rem;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      background: var(--gray-50);
-      transition: background var(--transition), color var(--transition);
-      color: var(--dark);
-    }
-    .faq-question:hover { background: #efefef; }
-    .faq-question.open { background: var(--red); color: var(--white); }
-    .faq-arrow { width: 20px; height: 20px; flex-shrink: 0; transition: transform .3s; }
-    .faq-question.open .faq-arrow { transform: rotate(180deg); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; padding: 0 24px; color: var(--gray-500); font-size: .93rem; line-height: 1.75; }
-    .faq-answer.open { max-height: 400px; padding: 18px 24px; }
-
-    /* ─── CONTACT / UBICACIÓN ──────────────────────────────────── */
-    #contact {
-      background: linear-gradient(135deg, var(--dark) 0%, #200808 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    #contact::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,32,32,.18) 0%, transparent 70%);
-      top: -200px; right: -200px;
-      pointer-events: none;
-    }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
-    .contact-info .section-tag { background: rgba(224,32,32,.2); }
-    .contact-info .section-title { color: var(--white); }
-    .contact-info .section-subtitle { color: rgba(255,255,255,.55); margin-bottom: 48px; }
-    .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
-    .contact-item-icon { width: 46px; height: 46px; min-width: 46px; background: rgba(224,32,32,.2); color: var(--red-light); border-radius: 10px; display: grid; place-items: center; font-size: 1rem; }
-    .contact-item-text strong { display: block; color: var(--white); font-size: .95rem; margin-bottom: 2px; }
-    .contact-item-text span { color: rgba(255,255,255,.5); font-size: .88rem; line-height: 1.5; }
-    .contact-right { display: flex; flex-direction: column; gap: 20px; }
-    .map-container { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
-    .map-container iframe { width: 100%; height: 280px; border: none; display: block; }
-    .wa-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 16px;
-      padding: 28px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .wa-card-text strong { display: block; color: var(--white); font-size: 1rem; margin-bottom: 4px; }
-    .wa-card-text span { color: rgba(255,255,255,.5); font-size: .88rem; }
-
-    /* ─── FOOTER ───────────────────────────────────────────────── */
-    footer { background: #080808; padding: 72px 0 0; }
-    .footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.07); }
-    .footer-brand-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .footer-brand-logo .nav-logo-icon { width: 42px; height: 42px; }
-    .footer-brand-logo .nav-logo-text span:first-child { font-size: 1.1rem; }
-    .footer-brand p { font-size: .88rem; color: rgba(255,255,255,.38); line-height: 1.7; margin-bottom: 28px; max-width: 300px; }
-    .social-links { display: flex; gap: 12px; }
-    .social-link { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.55); display: grid; place-items: center; font-size: .95rem; transition: background var(--transition), color var(--transition), transform var(--transition); }
-    .social-link:hover { background: var(--red); color: #fff; transform: translateY(-3px); }
-    .footer-col h4 { font-family: 'Poppins', sans-serif; font-size: .95rem; color: var(--white); margin-bottom: 24px; }
-    .footer-col ul li { margin-bottom: 12px; }
-    .footer-col ul li a { color: rgba(255,255,255,.4); font-size: .88rem; transition: color var(--transition); }
-    .footer-col ul li a:hover { color: var(--red-light); }
-    .footer-bottom { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: .83rem; color: rgba(255,255,255,.3); }
-    .footer-bottom a { color: var(--red-light); }
-
-    /* ─── WHATSAPP FLOAT ───────────────────────────────────────── */
-    .wa-float {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      z-index: 999;
-      background: #25D366;
       color: var(--white);
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 24px rgba(37,211,102,.5);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(37,211,102,.7); }
-    .wa-float svg { width: 30px; height: 30px; }
-
-    /* ─── SCROLL TOP ───────────────────────────────────────────── */
-    #scroll-top {
-      position: fixed;
-      bottom: 100px; right: 28px;
-      width: 44px; height: 44px;
-      background: var(--red);
-      color: #fff;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      font-size: 1rem;
-      box-shadow: 0 4px 20px rgba(224,32,32,.45);
+      overflow-x: hidden;
       opacity: 0;
-      transform: translateY(16px);
-      pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition);
-      z-index: 900;
+      animation: show .5s ease .05s forwards;
     }
-    #scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    #scroll-top:hover { background: var(--red-dark); transform: translateY(-2px); }
+    @keyframes show { to { opacity:1; } }
+    img { display:block; max-width:100%; }
+    button { font-family:var(--sans); cursor:pointer; border:none; background:none; }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-thumb { background:var(--gray-light); border-radius:4px; }
 
-    /* ─── RESPONSIVE ───────────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .services-grid .service-card:nth-child(4) { grid-column: auto; }
-      .services-grid .service-card:nth-child(5) { grid-column: auto; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,.07); }
-      .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,.07); }
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--red);
+      padding: .45rem 3rem;
+      text-align: center;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
     }
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 48px; }
-      .hero-subtitle { margin: 0 auto 40px; }
-      .hero-actions { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      .hero-visual { display: none; }
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
-      .faq-inner { grid-template-columns: 1fr; gap: 48px; }
-      .testimonials-grid { grid-template-columns: 1fr 1fr; }
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      background: rgba(8,8,8,.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: box-shadow .3s;
     }
-    @media (max-width: 640px) {
-      .section { padding: 72px 0; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .services-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .footer-inner { grid-template-columns: 1fr; }
-      .wa-card { flex-direction: column; align-items: flex-start; }
+    .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.7); }
+    .nav-brand { display:flex; align-items:center; gap:.75rem; }
+    .nav-logo {
+      width:42px; height:42px; border-radius:8px;
+      background: var(--red);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.3rem;
+    }
+    .nav-name {
+      font-family:var(--condensed); font-size:1.4rem;
+      font-weight:900; color:var(--white); letter-spacing:.04em; line-height:1;
+    }
+    .nav-name span { color:var(--red-light); }
+    .nav-sub {
+      font-size:.58rem; font-weight:500; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--gray); margin-top:.1rem;
+    }
+    .nav-links { display:flex; gap:1.75rem; }
+    .nav-links a {
+      font-size:.72rem; font-weight:600; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--gray);
+      transition:color .2s; position:relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0;
+      width:0; height:2px; background:var(--red-light);
+      transition:width .25s;
+    }
+    .nav-links a:hover { color:var(--red-light); }
+    .nav-links a:hover::after { width:100%; }
+    .nav-cta {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.6rem 1.4rem;
+      background:var(--green-wapp); color:var(--white);
+      font-size:.72rem; font-weight:800;
+      letter-spacing:.08em; text-transform:uppercase;
+      border-radius:4px;
+      transition:background .2s, transform .2s;
+    }
+    .nav-cta:hover { background:#1ebe5b; transform:translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      position:relative; min-height:100vh;
+      display:flex; align-items:center;
+      overflow:hidden;
+      padding-top: calc(var(--nav-h) + 2rem);
+    }
+    .hero-bg {
+      position:absolute; inset:0;
+      background-image:url('https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1800&q=90');
+      background-size:cover; background-position:center;
+      transform:scale(1.05);
+      animation:zBg 14s ease-in-out infinite alternate;
+    }
+    @keyframes zBg { to { transform:scale(1); } }
+    .hero-ov {
+      position:absolute; inset:0;
+      background:linear-gradient(110deg,
+        rgba(8,8,8,.96) 0%,
+        rgba(8,8,8,.82) 55%,
+        rgba(8,8,8,.4) 100%
+      );
+    }
+    .hero-ov-bot {
+      position:absolute; bottom:0; left:0; right:0; height:200px;
+      background:linear-gradient(to top, var(--dark), transparent);
+    }
+    .hero-content {
+      position:relative; z-index:1;
+      padding:0 3rem; max-width:820px;
+    }
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:.6rem;
+      font-size:.68rem; font-weight:700; letter-spacing:.25em;
+      text-transform:uppercase; color:var(--red-light);
+      margin-bottom:1.5rem;
+    }
+    .hero-eyebrow::before { content:''; width:28px; height:2px; background:var(--red); }
+    .hero h1 {
+      font-family:var(--condensed);
+      font-size:clamp(3.5rem,8vw,7rem);
+      font-weight:900; line-height:.95;
+      text-transform:uppercase; letter-spacing:.01em;
+      margin-bottom:1.5rem;
+    }
+    .hero h1 .l1 { display:block; color:var(--white); }
+    .hero h1 .l2 { display:block; color:var(--red-light); }
+    .hero h1 .l3 { display:block; color:transparent; -webkit-text-stroke:2px rgba(255,255,255,.18); }
+    .hero-desc {
+      font-size:1rem; color:rgba(255,255,255,.55);
+      line-height:1.8; margin-bottom:2.5rem;
+      max-width:460px; font-weight:300;
+    }
+    .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:3rem; }
+    .btn-red {
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.95rem 2.25rem;
+      background:var(--red); color:var(--white);
+      font-size:.82rem; font-weight:800;
+      letter-spacing:.1em; text-transform:uppercase;
+      border-radius:4px;
+      transition:background .2s, transform .2s;
+      box-shadow:0 0 28px rgba(224,32,32,.4);
+    }
+    .btn-red:hover { background:var(--red-dark); transform:translateY(-2px); }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding:.95rem 2.25rem;
+      border:1px solid rgba(255,255,255,.2); color:var(--white);
+      font-size:.82rem; font-weight:600;
+      letter-spacing:.08em; text-transform:uppercase;
+      border-radius:4px;
+      transition:border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color:var(--red-light); color:var(--red-light); }
+    .hero-chips { display:flex; gap:1rem; flex-wrap:wrap; }
+    .hero-chip {
+      display:flex; align-items:center; gap:.5rem;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:100px; padding:.4rem 1rem;
+      font-size:.75rem; font-weight:600; color:rgba(255,255,255,.6);
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background:var(--red); padding:.65rem 0;
+      overflow:hidden; white-space:nowrap;
+    }
+    .ticker-inner { display:inline-flex; animation:tick 28s linear infinite; }
+    .tick-txt {
+      font-family:var(--condensed); font-size:1rem; font-weight:900;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.85); padding:0 2.5rem;
+    }
+    @keyframes tick { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+    /* ── SECTIONS ── */
+    .section { padding:5.5rem 3rem; }
+    .sh { margin-bottom:3.5rem; }
+    .stag {
+      font-size:.65rem; font-weight:700; letter-spacing:.25em;
+      text-transform:uppercase; color:var(--red-light);
+      display:flex; align-items:center; gap:.5rem; margin-bottom:.6rem;
+    }
+    .stag::before { content:''; width:18px; height:2px; background:var(--red); border-radius:2px; }
+    .stitle {
+      font-family:var(--condensed);
+      font-size:clamp(2.4rem,4vw,3.8rem);
+      font-weight:900; text-transform:uppercase;
+      color:var(--white); line-height:1; letter-spacing:.02em;
+      margin-bottom:.75rem;
+    }
+    .stitle em { font-style:italic; color:var(--red-light); }
+    .ssub { font-size:.95rem; color:var(--gray); line-height:1.75; max-width:520px; }
+
+    /* ── SERVICIOS ── */
+    .svc-section { background:var(--dark2); }
+    .svc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+    .svc-card {
+      background:var(--dark3);
+      border:1px solid var(--gray-light);
+      border-radius:14px; overflow:hidden;
+      display:grid; grid-template-columns:200px 1fr;
+      transition:border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .svc-card:hover {
+      border-color:var(--red);
+      transform:translateY(-4px);
+      box-shadow:0 16px 48px rgba(224,32,32,.15);
+    }
+    .svc-img { overflow:hidden; background:var(--steel); }
+    .svc-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+    .svc-card:hover .svc-img img { transform:scale(1.07); }
+    .svc-body { padding:1.75rem; display:flex; flex-direction:column; justify-content:center; }
+    .svc-num {
+      font-family:var(--condensed); font-size:3.5rem; font-weight:900;
+      color:rgba(255,255,255,.04); line-height:1; margin-bottom:-.75rem;
+    }
+    .svc-icon {
+      width:48px; height:48px; border-radius:10px;
+      background:var(--red-glow); border:1px solid rgba(224,32,32,.25);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.4rem; margin-bottom:1rem;
+      transition:background .3s;
+    }
+    .svc-card:hover .svc-icon { background:var(--red); }
+    .svc-name {
+      font-family:var(--condensed); font-size:1.6rem; font-weight:900;
+      text-transform:uppercase; color:var(--white);
+      letter-spacing:.03em; margin-bottom:.5rem; line-height:1.1;
+    }
+    .svc-desc { font-size:.82rem; color:var(--gray); line-height:1.7; margin-bottom:1.25rem; }
+    .svc-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .svc-tag {
+      padding:.25rem .7rem; font-size:.65rem; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase;
+      background:var(--steel); color:var(--gray);
+      border:1px solid var(--gray-light); border-radius:100px;
+      transition:border-color .2s, color .2s;
+    }
+    .svc-card:hover .svc-tag { border-color:rgba(224,32,32,.35); color:rgba(224,32,32,.8); }
+
+    /* ── STATS ── */
+    .stats-bg { background:var(--red); padding:3.5rem 3rem; }
+    .stats-inner {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:rgba(0,0,0,.15);
+      border-radius:12px; overflow:hidden;
+      max-width:900px; margin:0 auto;
+    }
+    .stat-box {
+      background:var(--red); padding:2.5rem 1.5rem; text-align:center;
+      transition:background .2s;
+    }
+    .stat-box:hover { background:var(--red-dark); }
+    .stat-n {
+      font-family:var(--condensed); font-size:3.2rem; font-weight:900;
+      color:var(--white); line-height:1; margin-bottom:.3rem;
+    }
+    .stat-l {
+      font-size:.7rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:rgba(255,255,255,.65);
+    }
+
+    /* ── POR QUÉ NOSOTROS ── */
+    .why-section { background:var(--dark); }
+    .why-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .why-img-wrap { position:relative; }
+    .why-img-main { border-radius:16px; overflow:hidden; height:460px; }
+    .why-img-main img { width:100%; height:100%; object-fit:cover; }
+    .why-img-sec {
+      position:absolute; bottom:-28px; right:-28px;
+      width:55%; height:210px;
+      border-radius:14px; overflow:hidden;
+      border:5px solid var(--dark);
+      box-shadow:0 16px 48px rgba(0,0,0,.5);
+    }
+    .why-img-sec img { width:100%; height:100%; object-fit:cover; }
+    .why-badge {
+      position:absolute; top:-20px; left:-20px;
+      width:72px; height:72px; border-radius:50%;
+      background:var(--red);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      box-shadow:0 8px 24px rgba(224,32,32,.45);
+      animation:floatBadge 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatBadge { to { transform:translateY(-8px); } }
+    .why-badge strong { font-family:var(--condensed); font-size:1.3rem; font-weight:900; color:var(--white); line-height:1; }
+    .why-badge span { font-size:.45rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.75); text-align:center; }
+    .why-list { display:flex; flex-direction:column; gap:1rem; margin:2rem 0; }
+    .why-item {
+      display:flex; align-items:flex-start; gap:.9rem;
+      padding:1.1rem 1.25rem; background:var(--dark2);
+      border:1px solid var(--gray-light); border-radius:10px;
+      transition:border-color .25s, transform .25s;
+    }
+    .why-item:hover { border-color:var(--red); transform:translateX(4px); }
+    .why-ico {
+      width:40px; height:40px; border-radius:8px;
+      background:var(--red-glow); border:1px solid rgba(224,32,32,.25);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.1rem; flex-shrink:0;
+      transition:background .25s;
+    }
+    .why-item:hover .why-ico { background:var(--red); }
+    .why-item strong { display:block; font-size:.88rem; font-weight:700; color:var(--white); margin-bottom:.15rem; }
+    .why-item span { font-size:.78rem; color:var(--gray); line-height:1.5; }
+
+    /* ── GALERÍA ── */
+    .gallery-section { background:var(--dark2); }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr;
+      grid-template-rows:240px 240px;
+      gap:8px; border-radius:16px; overflow:hidden;
+    }
+    .gl { overflow:hidden; position:relative; background:var(--steel); }
+    .gl:first-child { grid-row:1/3; }
+    .gl img { width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+    .gl:hover img { transform:scale(1.06); }
+    .gl-lbl {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(to top,rgba(8,8,8,.75),transparent);
+      padding:1.25rem 1rem .75rem;
+      font-size:.7rem; font-weight:800; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--white);
+      opacity:0; transition:opacity .3s;
+    }
+    .gl:hover .gl-lbl { opacity:1; }
+
+    /* ── FAQ + CHATBOT ── */
+    .faq-section { background:var(--dark2); padding:5.5rem 3rem; }
+    .faq-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+
+    .bot-shell {
+      border-radius:18px; overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+      border:1px solid var(--gray-light);
+    }
+    .bot-hdr {
+      background:linear-gradient(135deg,var(--dark3),var(--steel));
+      padding:1rem 1.25rem;
+      display:flex; align-items:center; gap:.85rem;
+      border-bottom:1px solid var(--gray-light);
+    }
+    .bot-av {
+      width:44px; height:44px; border-radius:50%;
+      background:var(--red);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; flex-shrink:0;
+    }
+    .bot-hdr strong { display:block; color:var(--white); font-size:.9rem; font-weight:700; }
+    .bot-hdr span { font-size:.7rem; color:var(--gray); }
+    .bot-msgs {
+      background:var(--dark3); padding:1.25rem;
+      min-height:320px; max-height:320px; overflow-y:auto;
+      display:flex; flex-direction:column; gap:.75rem;
+    }
+    .bot-msgs::-webkit-scrollbar { width:3px; }
+    .bot-msgs::-webkit-scrollbar-thumb { background:var(--gray-light); }
+    .bm {
+      max-width:88%; padding:.7rem 1rem;
+      border-radius:4px 14px 14px 14px;
+      background:var(--dark2); font-size:.83rem; line-height:1.55;
+      color:var(--white); border:1px solid var(--gray-light);
+      animation:bPop .25s var(--ease);
+    }
+    .bm.u {
+      align-self:flex-end;
+      background:var(--red); color:var(--white);
+      border-color:transparent; border-radius:14px 4px 14px 14px;
+    }
+    @keyframes bPop { from{opacity:0;transform:translateY(6px);} }
+    .bts { font-size:.6rem; color:var(--gray); margin-top:.2rem; }
+    .bm.u .bts { color:rgba(255,255,255,.45); }
+    .bopts { display:flex; flex-direction:column; gap:.4rem; margin-top:.5rem; }
+    .bopt {
+      background:var(--steel); border:1px solid var(--gray-light);
+      border-radius:8px; padding:.5rem .9rem;
+      font-size:.78rem; font-weight:600; color:var(--red-light);
+      text-align:left; transition:background .15s, border-color .15s;
+    }
+    .bopt:hover { background:var(--red-glow); border-color:var(--red); }
+    .bot-ft {
+      background:var(--dark2); padding:.85rem 1.1rem;
+      display:flex; gap:.5rem; align-items:center;
+      border-top:1px solid var(--gray-light);
+    }
+    .bot-inp {
+      flex:1; padding:.55rem 1rem; border-radius:8px;
+      border:1px solid var(--gray-light);
+      font-family:var(--sans); font-size:.82rem;
+      background:var(--dark3); color:var(--gray); outline:none; cursor:default;
+    }
+    .bot-sb {
+      width:36px; height:36px; border-radius:8px;
+      background:var(--red); color:var(--white);
+      display:flex; align-items:center; justify-content:center; font-size:.85rem;
+    }
+
+    /* faq accordion */
+    .faq-list { display:flex; flex-direction:column; gap:.75rem; }
+    .faq-item { border:1px solid var(--gray-light); border-radius:10px; overflow:hidden; transition:border-color .2s; }
+    .faq-item:hover { border-color:rgba(224,32,32,.4); }
+    .faq-q {
+      padding:1.1rem 1.25rem;
+      display:flex; align-items:center; justify-content:space-between;
+      cursor:pointer; font-size:.88rem; font-weight:600; color:var(--white);
+    }
+    .faq-ic {
+      width:24px; height:24px; border-radius:50%;
+      background:var(--gray-light);
+      display:flex; align-items:center; justify-content:center;
+      font-size:.75rem; color:var(--gray); flex-shrink:0;
+      transition:background .2s, transform .3s;
+    }
+    .faq-item.open .faq-ic { background:var(--red); color:var(--white); transform:rotate(45deg); }
+    .faq-a {
+      font-size:.82rem; color:var(--gray); line-height:1.7;
+      padding:0 1.25rem; max-height:0; overflow:hidden;
+      transition:max-height .35s var(--ease), padding .35s;
+    }
+    .faq-item.open .faq-a { max-height:200px; padding:0 1.25rem 1.1rem; }
+
+    /* ── CONTACTO/MAPA ── */
+    .contact-section { background:var(--dark); }
+    .contact-inner { display:grid; grid-template-columns:1fr 1.5fr; gap:4rem; align-items:center; }
+    .loc-items { display:flex; flex-direction:column; gap:1rem; margin:2rem 0; }
+    .loc-item {
+      display:flex; align-items:flex-start; gap:.9rem;
+      padding:1.1rem; background:var(--dark2);
+      border:1px solid var(--gray-light); border-radius:10px;
+      transition:border-color .2s;
+    }
+    .loc-item:hover { border-color:var(--red); }
+    .loc-ico {
+      width:40px; height:40px; border-radius:8px;
+      background:var(--red);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1rem; flex-shrink:0;
+    }
+    .loc-item strong { display:block; font-size:.82rem; font-weight:700; color:var(--white); margin-bottom:.2rem; }
+    .loc-item span { font-size:.78rem; color:var(--gray); line-height:1.5; }
+    .btn-wapp {
+      display:inline-flex; align-items:center; gap:.65rem;
+      padding:.9rem 2rem;
+      background:var(--green-wapp); color:#fff;
+      font-size:.8rem; font-weight:800;
+      letter-spacing:.06em; text-transform:uppercase;
+      border-radius:6px;
+      transition:transform .2s, box-shadow .2s;
+      box-shadow:0 4px 18px rgba(37,211,102,.3);
+    }
+    .btn-wapp:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(37,211,102,.45); }
+    .map-frame {
+      border-radius:16px; overflow:hidden;
+      height:420px; border:1px solid var(--gray-light);
+    }
+    .map-frame iframe { width:100%; height:100%; border:none; display:block; }
+
+    /* ── FOOTER ── */
+    .footer { background:var(--black); padding:3rem 3rem 1.75rem; }
+    .footer-top {
+      display:grid; grid-template-columns:1.6fr 1fr 1fr;
+      gap:3rem; padding-bottom:2.5rem;
+      border-bottom:1px solid rgba(255,255,255,.06); margin-bottom:1.75rem;
+    }
+    .ft-name {
+      font-family:var(--condensed); font-size:1.7rem; font-weight:900;
+      text-transform:uppercase; color:var(--white); line-height:1; margin-bottom:.2rem;
+    }
+    .ft-name span { color:var(--red-light); }
+    .ft-sub { font-size:.6rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--gray); margin-bottom:.85rem; }
+    .ft-desc { font-size:.8rem; color:rgba(255,255,255,.25); line-height:1.7; max-width:260px; }
+    .ft-col h4 { font-size:.62rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--red-light); margin-bottom:1.1rem; }
+    .ft-col li { font-size:.8rem; color:rgba(255,255,255,.28); margin-bottom:.55rem; transition:color .2s; cursor:pointer; }
+    .ft-col li:hover { color:rgba(255,255,255,.65); }
+    .footer-bottom {
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:.72rem; color:rgba(255,255,255,.15); flex-wrap:wrap; gap:.5rem;
+    }
+    .footer-bottom a { color:var(--red-light); }
+
+    /* ── FLOAT WA ── */
+    .wa-fab { position:fixed; bottom:2rem; right:2rem; z-index:999; }
+    .wa-fab-btn {
+      width:62px; height:62px; border-radius:50%;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; color:#fff;
+      box-shadow:0 6px 26px rgba(37,211,102,.45);
+      transition:transform .25s, box-shadow .25s;
+      animation:waPulse 2.5s ease-in-out infinite;
+    }
+    .wa-fab-btn:hover { transform:scale(1.1); animation:none; }
+    @keyframes waPulse {
+      0%,100%{box-shadow:0 6px 26px rgba(37,211,102,.45);}
+      50%{box-shadow:0 6px 26px rgba(37,211,102,.45),0 0 0 10px rgba(37,211,102,.1);}
+    }
+    .wa-fab-tip {
+      position:absolute; right:72px; top:50%; transform:translateY(-50%);
+      background:var(--black); color:var(--white);
+      font-size:.72rem; font-weight:600; white-space:nowrap;
+      padding:.4rem .8rem; border-radius:6px;
+      opacity:0; pointer-events:none; transition:opacity .2s;
+      border:1px solid var(--gray-light);
+    }
+    .wa-fab-tip::after {
+      content:''; position:absolute; left:100%; top:50%; transform:translateY(-50%);
+      border:5px solid transparent; border-left-color:var(--black);
+    }
+    .wa-fab:hover .wa-fab-tip { opacity:1; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .svc-card { grid-template-columns:1fr; }
+      .svc-img { height:200px; }
+      .why-img-sec { display:none; }
+    }
+    @media(max-width:900px){
+      .nav { padding:0 1.5rem; }
+      .nav-links { display:none; }
+      .section { padding:4rem 1.5rem; }
+      .faq-section, .contact-section { padding:4rem 1.5rem; }
+      .hero-content { padding:0 1.5rem; }
+      .svc-grid { grid-template-columns:1fr; }
+      .why-inner { grid-template-columns:1fr; }
+      .faq-inner { grid-template-columns:1fr; }
+      .contact-inner { grid-template-columns:1fr; }
+      .footer-top { grid-template-columns:1fr; gap:2rem; }
+      .stats-bg { padding:2.5rem 1.5rem; }
+      .top-bar { padding:.45rem 1.5rem; }
+    }
+    @media(max-width:640px){
+      .stats-inner { grid-template-columns:1fr 1fr; }
+      .stat-box { padding:1.75rem 1rem; }
+      .stat-n { font-size:2.4rem; }
+      .gallery-grid { grid-template-columns:1fr; grid-template-rows:auto; }
+      .gl:first-child { grid-row:auto; }
+      .footer { padding:2.5rem 1.5rem 1.5rem; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+      .hero h1 { font-size:clamp(3rem,13vw,5rem); }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════ NAVBAR ══════════════════════════════ -->
-<nav id="navbar">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-logo">
-      <div class="nav-logo-icon"><i class="fa-solid fa-car-burst"></i></div>
-      <div class="nav-logo-text">
-        <span>Suspensiones Los Ángeles</span>
-        <span>Especialistas en suspensión · Querétaro</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">Nosotros</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#testimonials">Testimonios</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Ubicación</a></li>
-    </ul>
-    <a href="https://wa.me/5214421000000?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
-       class="btn btn-whatsapp nav-cta"
-       target="_blank" rel="noopener">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#about" class="mobile-link">Nosotros</a>
-  <a href="#services" class="mobile-link">Servicios</a>
-  <a href="#testimonials" class="mobile-link">Testimonios</a>
-  <a href="#faq" class="mobile-link">Preguntas frecuentes</a>
-  <a href="#contact" class="mobile-link">Ubicación</a>
+<!-- ══ TOP BAR ══ -->
+<div class="top-bar">
+  El Romerillal, C.P. 76118 · Santiago de Querétaro, Qro.
 </div>
 
-<!-- ══════════════════════ HERO ════════════════════════════════ -->
-<section id="hero">
-  <div class="hero-texture"></div>
-  <div class="container hero-inner">
+<!-- ══ NAV ══ -->
+<nav class="nav" id="main-nav" style="top:32px">
+  <div class="nav-brand">
+    <div class="nav-logo">🔧</div>
+    <div>
+      <div class="nav-name">Suspensiones <span>Los Ángeles</span></div>
+      <div class="nav-sub">Especialistas · Santiago de Querétaro</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-cta"
+     href="https://wa.me/5214421000000?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
+     target="_blank">
+    💬 Agendar cita
+  </a>
+</nav>
 
-    <div class="hero-content reveal">
-      <h1 class="hero-title">
-        Tu <span>seguridad</span><br />en el camino<br />es nuestra prioridad
-      </h1>
-      <p class="hero-subtitle">
-        Especialistas en suspensión, amortiguadores, alineación, balanceo y frenos en Santiago de Querétaro. Diagnóstico profesional y mano de obra garantizada.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wa.me/5214421000000?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
-           class="btn btn-whatsapp" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Agendar cita
-        </a>
-        <a href="#services" class="btn btn-outline">Ver servicios</a>
+<!-- ══ HERO ══ -->
+<section class="hero" id="inicio" style="padding-top:calc(68px + 32px + 2rem)">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-ov-bot"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">El Romerillal · Santiago de Querétaro</div>
+    <h1>
+      <span class="l1">Tu seguridad</span>
+      <span class="l2">en el camino</span>
+      <span class="l3">garantizada</span>
+    </h1>
+    <p class="hero-desc">Especialistas en suspensión, amortiguadores, alineación, balanceo y frenos. Diagnóstico profesional y trabajo garantizado en Querétaro.</p>
+    <div class="hero-btns">
+      <a class="btn-red"
+         href="https://wa.me/5214421000000?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
+         target="_blank">🔧 Agendar por WhatsApp</a>
+      <a class="btn-ghost" href="#servicios">Ver servicios →</a>
+    </div>
+    <div class="hero-chips">
+      <div class="hero-chip">✅ Trabajo garantizado</div>
+      <div class="hero-chip">🔩 Refacciones de calidad</div>
+      <div class="hero-chip">⚡ Servicio rápido</div>
+      <div class="hero-chip">🚗 Todas las marcas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick-txt">Suspensiones Los Ángeles</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Alineación</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Balanceo</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Frenos</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Suspensión</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Santiago de Querétaro</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Suspensiones Los Ángeles</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Alineación</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Balanceo</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Frenos</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Suspensión</span><span class="tick-txt">✦</span>
+    <span class="tick-txt">Santiago de Querétaro</span><span class="tick-txt">✦</span>
+  </div>
+</div>
+
+<!-- ══ SERVICIOS ══ -->
+<section class="section svc-section" id="servicios">
+  <div class="sh">
+    <div class="stag">Nuestros servicios</div>
+    <h2 class="stitle">Lo que hacemos<br><em>mejor</em></h2>
+    <p class="ssub">Servicios especializados para mantener tu vehículo en óptimas condiciones. Diagnóstico preciso y mano de obra garantizada.</p>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&q=80" alt="Alineación" loading="lazy">
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-number">+<span>15</span></div>
-          <div class="hero-stat-label">Años de experiencia</div>
-        </div>
-        <div>
-          <div class="hero-stat-number">+<span>5K</span></div>
-          <div class="hero-stat-label">Vehículos atendidos</div>
-        </div>
-        <div>
-          <div class="hero-stat-number"><span>100</span>%</div>
-          <div class="hero-stat-label">Garantía en trabajo</div>
+      <div class="svc-body">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🎯</div>
+        <div class="svc-name">Alineación</div>
+        <div class="svc-desc">Corrección computarizada del ángulo de las ruedas para garantizar manejo recto y uniforme. Evita desgaste irregular de llantas y mejora el control del vehículo.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Alineación 2D</span>
+          <span class="svc-tag">4 ruedas</span>
+          <span class="svc-tag">Camionetas</span>
+          <span class="svc-tag">SUVs</span>
         </div>
       </div>
     </div>
 
-    <div class="hero-visual reveal">
-      <div class="hero-card">
-        <div class="hero-services-list">
-          <div class="hero-service-item">
-            <div class="hero-service-icon"><i class="fa-solid fa-crosshairs"></i></div>
-            <div>
-              <div class="hero-service-name">Alineación computarizada</div>
-              <div class="hero-service-sub">Equipo de última generación</div>
-            </div>
-          </div>
-          <div class="hero-service-item">
-            <div class="hero-service-icon"><i class="fa-solid fa-rotate"></i></div>
-            <div>
-              <div class="hero-service-name">Balanceo electrónico</div>
-              <div class="hero-service-sub">Elimina vibraciones al instante</div>
-            </div>
-          </div>
-          <div class="hero-service-item">
-            <div class="hero-service-icon"><i class="fa-solid fa-circle-stop"></i></div>
-            <div>
-              <div class="hero-service-name">Sistema de frenos</div>
-              <div class="hero-service-sub">Balatas, discos y tambores</div>
-            </div>
-          </div>
-          <div class="hero-service-item">
-            <div class="hero-service-icon"><i class="fa-solid fa-gears"></i></div>
-            <div>
-              <div class="hero-service-name">Suspensión completa</div>
-              <div class="hero-service-sub">Amortiguadores, rótulas y más</div>
-            </div>
-          </div>
+    <div class="svc-card">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Balanceo" loading="lazy">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">⚖️</div>
+        <div class="svc-name">Balanceo</div>
+        <div class="svc-desc">Equilibrio perfecto de ruedas y llantas para eliminar vibraciones al manejar. Prolonga la vida útil de neumáticos y mejora la comodidad en carretera.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Balanceo estático</span>
+          <span class="svc-tag">Balanceo dinámico</span>
+          <span class="svc-tag">Todo tipo de llanta</span>
         </div>
       </div>
-      <div class="hero-pill pill-2"><i class="fa-solid fa-clock"></i> Servicio en el mismo día</div>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80" alt="Frenos" loading="lazy">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🛑</div>
+        <div class="svc-name">Frenos</div>
+        <div class="svc-desc">Revisión, ajuste y sustitución del sistema de frenos. Balatas, discos, tambores y líquido de frenos. Tu seguridad y la de tu familia es lo primero.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Balatas</span>
+          <span class="svc-tag">Discos</span>
+          <span class="svc-tag">Tambores</span>
+          <span class="svc-tag">Freno de mano</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=600&q=80" alt="Suspensión" loading="lazy">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">🔩</div>
+        <div class="svc-name">Suspensión</div>
+        <div class="svc-desc">Diagnóstico y reparación completa del sistema de suspensión. Amortiguadores, resortes, rótulas, bujes y terminales para una conducción suave y segura.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Amortiguadores</span>
+          <span class="svc-tag">Resortes</span>
+          <span class="svc-tag">Rótulas</span>
+          <span class="svc-tag">Bujes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-card" style="grid-column:1/-1">
+      <div class="svc-img">
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=80" alt="Suspensión y Alineación" loading="lazy">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">🚗</div>
+        <div class="svc-name">Suspensión y Alineación</div>
+        <div class="svc-desc">Servicio integral que combina reparación completa de suspensión con alineación computarizada. El servicio más completo para máxima seguridad, estabilidad y rendimiento de tu vehículo en un solo servicio.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Servicio completo</span>
+          <span class="svc-tag">Suspensión + Alineación</span>
+          <span class="svc-tag">Diagnóstico incluido</span>
+          <span class="svc-tag">Garantía total</span>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════ ABOUT ════════════════════════════════ -->
-<section id="about" class="section">
-  <div class="container about-inner">
+<!-- ══ STATS ══ -->
+<div class="stats-bg">
+  <div class="stats-inner">
+    <div class="stat-box">
+      <div class="stat-n">+15</div>
+      <div class="stat-l">Años de experiencia</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">+5,000</div>
+      <div class="stat-l">Vehículos atendidos</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">5</div>
+      <div class="stat-l">Servicios especializados</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">100%</div>
+      <div class="stat-l">Trabajo garantizado</div>
+    </div>
+  </div>
+</div>
 
-    <div class="about-visual reveal">
-      <div class="about-visual-bg"></div>
-      <div class="about-visual-grid"></div>
-      <div class="about-visual-glow"></div>
-      <div class="about-icon-grid">
-        <div class="about-icon-item">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
-          <span>Herramienta especializada</span>
-        </div>
-        <div class="about-icon-item">
-          <i class="fa-solid fa-medal"></i>
-          <span>Refacciones de calidad</span>
-        </div>
-        <div class="about-icon-item">
-          <i class="fa-solid fa-users"></i>
-          <span>Técnicos certificados</span>
-        </div>
-        <div class="about-icon-item">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span>Trabajo garantizado</span>
-        </div>
+<!-- ══ POR QUÉ NOSOTROS ══ -->
+<section class="section why-section" id="nosotros">
+  <div class="why-inner">
+    <div class="why-img-wrap">
+      <div class="why-img-main">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=900&q=85" alt="Taller suspensiones" loading="lazy">
       </div>
-      <div class="about-badge-card">
-        <div class="about-badge-num">15+</div>
-        <div class="about-badge-text">Años atendiendo a conductores<br/>de Querétaro con confianza</div>
+      <div class="why-img-sec">
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=500&q=85" alt="Mecánico trabajando" loading="lazy">
+      </div>
+      <div class="why-badge">
+        <strong>15+</strong>
+        <span>años de confianza</span>
       </div>
     </div>
-
-    <div class="about-text reveal">
-      <div class="section-tag">Quiénes somos</div>
-      <h2 class="section-title">Un taller con experiencia, honestidad y garantía real</h2>
-      <p class="section-subtitle">
-        En Suspensiones Los Ángeles llevamos más de 15 años cuidando la seguridad de familias y conductores queretanos. Trabajamos con refacciones de marcas reconocidas y equipo especializado para garantizar resultados duraderos.
-      </p>
-      <div class="about-checks">
-        <div class="about-check">
-          <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-          <div class="check-text">
-            <strong>Diagnóstico gratuito y honesto</strong>
-            <span>Te explicamos exactamente qué necesita tu vehículo antes de cobrar un centavo.</span>
+    <div>
+      <div class="stag">¿Por qué elegirnos?</div>
+      <h2 class="stitle">Experiencia y<br><em>confianza</em></h2>
+      <p class="ssub">Más de 15 años al servicio de Querétaro. Trabajamos con honestidad, refacciones de calidad y garantía real en cada servicio.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-ico">🎯</div>
+          <div>
+            <strong>Diagnóstico honesto</strong>
+            <span>Te explicamos exactamente qué necesita tu vehículo antes de cobrar. Sin sorpresas en la factura.</span>
           </div>
         </div>
-        <div class="about-check">
-          <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-          <div class="check-text">
-            <strong>Refacciones originales y de calidad</strong>
-            <span>Usamos marcas reconocidas con garantía de fabricante para mayor durabilidad.</span>
+        <div class="why-item">
+          <div class="why-ico">🔩</div>
+          <div>
+            <strong>Refacciones de calidad</strong>
+            <span>Usamos marcas reconocidas con garantía de fabricante para mayor durabilidad y confianza.</span>
           </div>
         </div>
-        <div class="about-check">
-          <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-          <div class="check-text">
-            <strong>Garantía en mano de obra</strong>
-            <span>Todos nuestros servicios están respaldados. Si hay problema, lo revisamos sin costo.</span>
+        <div class="why-item">
+          <div class="why-ico">⚡</div>
+          <div>
+            <strong>Servicio rápido</strong>
+            <span>La mayoría de los servicios se realizan el mismo día. Entendemos que necesitas tu vehículo.</span>
           </div>
         </div>
-        <div class="about-check">
-          <div class="check-icon"><i class="fa-solid fa-check"></i></div>
-          <div class="check-text">
-            <strong>Atendemos todas las marcas y modelos</strong>
-            <span>Compactos, sedanes, SUVs, camionetas y pickups. Todo tipo de vehículos.</span>
+        <div class="why-item">
+          <div class="why-ico">✅</div>
+          <div>
+            <strong>Garantía en todo</strong>
+            <span>Mano de obra y refacciones garantizadas. Si hay problema, regresa y lo resolvemos sin costo.</span>
           </div>
         </div>
       </div>
-      <a href="https://wa.me/5214421000000?text=Hola%2C%20me%20gustar%C3%ADa%20llevar%20mi%20veh%C3%ADculo%20a%20revisi%C3%B3n"
-         class="btn btn-primary" target="_blank" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> Agendar revisión
+      <a class="btn-red"
+         href="https://wa.me/5214421000000?text=Hola%2C%20quiero%20llevar%20mi%20veh%C3%ADculo%20a%20Suspensiones%20Los%20%C3%81ngeles"
+         target="_blank"
+         style="display:inline-flex;margin-top:.5rem">
+        Agendar revisión →
       </a>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════ SERVICES ════════════════════════════ -->
-<section id="services" class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Nuestros servicios</div>
-      <h2 class="section-title">Todo lo que tu vehículo necesita</h2>
-      <p class="section-subtitle">Servicios integrales de suspensión y mantenimiento para que circules con total seguridad y comodidad.</p>
+<!-- ══ GALERÍA ══ -->
+<section class="section gallery-section" id="galeria">
+  <div class="sh">
+    <div class="stag">Nuestro taller</div>
+    <h2 class="stitle">Instalaciones y<br><em>trabajos</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gl">
+      <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=900&q=85" alt="Taller" loading="lazy">
+      <div class="gl-lbl">Nuestro taller</div>
     </div>
-    <div class="services-grid">
-
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-crosshairs"></i></div>
-        <h3>Alineación Computarizada</h3>
-        <p>Corregimos los ángulos de las ruedas con equipo de última generación. Evita el desgaste irregular de llantas, mejora el control y reduce el consumo de combustible.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-rotate"></i></div>
-        <h3>Balanceo Electrónico</h3>
-        <p>Distribuimos el peso uniformemente en cada rueda para eliminar vibraciones molestas. Prolonga la vida útil de tus llantas y mejora la comodidad al conducir.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-circle-stop"></i></div>
-        <h3>Sistema de Frenos</h3>
-        <p>Revisión, ajuste y reemplazo de balatas, discos y tambores. Garantizamos que tu sistema de frenado responda a tiempo para proteger a tu familia en todo momento.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
-        <h3>Suspensión</h3>
-        <p>Diagnóstico y reparación de amortiguadores, resortes, rótulas, terminales y muñones. Recupera la estabilidad y el confort original de tu vehículo.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon"><i class="fa-solid fa-car-on"></i></div>
-        <h3>Suspensión y Alineación</h3>
-        <p>Servicio integral que combina la reparación completa de suspensión con alineación computarizada. Un solo servicio para máxima seguridad y rendimiento.</p>
-      </div>
-
+    <div class="gl">
+      <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=600&q=80" alt="Alineación" loading="lazy">
+      <div class="gl-lbl">Alineación</div>
+    </div>
+    <div class="gl">
+      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80" alt="Frenos" loading="lazy">
+      <div class="gl-lbl">Sistema de frenos</div>
+    </div>
+    <div class="gl">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Balanceo" loading="lazy">
+      <div class="gl-lbl">Balanceo de ruedas</div>
+    </div>
+    <div class="gl">
+      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&q=80" alt="Suspensión" loading="lazy">
+      <div class="gl-lbl">Suspensión</div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ STATS BAND ══════════════════════════ -->
-<section id="stats">
-  <div class="container">
-    <div class="stats-inner">
-      <div class="stat-item reveal">
-        <div class="stat-num">+<span>15</span></div>
-        <div class="stat-label">Años de experiencia</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num">+<span>5,000</span></div>
-        <div class="stat-label">Vehículos atendidos</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num"><span>100</span>%</div>
-        <div class="stat-label">Garantía en mano de obra</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num"><span>5</span>★</div>
-        <div class="stat-label">Calificación de clientes</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ══ FAQ + CHATBOT ══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
 
-<!-- ══════════════════════ TESTIMONIALS ════════════════════════ -->
-<section id="testimonials" class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Testimonios</div>
-      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-      <p class="section-subtitle">La confianza de cada conductor que nos visita es lo que nos motiva a seguir mejorando cada día.</p>
-    </div>
-    <div class="testimonials-grid">
-
-      <div class="testimonial-card reveal">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-        </div>
-        <p class="testimonial-text">"Llevé mi camioneta porque se sacudía mucho en carretera. En menos de 2 horas le hicieron el balanceo y la alineación y quedó perfecta. Precio justo y atención excelente. ¡Definitivamente regreso!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">R</div>
+    <div>
+      <div class="stag">Asistente virtual</div>
+      <h2 class="stitle" style="margin-bottom:1rem">Preguntas<br><em>frecuentes</em></h2>
+      <p class="ssub" style="margin-bottom:2rem">Chatea con nuestro asistente o consulta las respuestas rápidas al lado.</p>
+      <div class="bot-shell">
+        <div class="bot-hdr">
+          <div class="bot-av">🔧</div>
           <div>
-            <div class="author-name">Roberto Vargas</div>
-            <div class="author-role">Cliente desde 2019</div>
+            <strong>Asistente Los Ángeles</strong>
+            <span>🔴 Siempre disponible</span>
           </div>
         </div>
-      </div>
-
-      <div class="testimonial-card reveal">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <div class="bot-msgs" id="bot-msgs">
+          <div class="bm">
+            ¡Hola! 🔧 Bienvenido a <b>Suspensiones Los Ángeles</b>. ¿En qué te puedo ayudar?
+            <div class="bts">Ahora</div>
+            <div class="bopts">
+              <button class="bopt" onclick="botStep('precios')">💰 ¿Cuánto cobran los servicios?</button>
+              <button class="bopt" onclick="botStep('horario')">🕗 ¿Cuál es el horario?</button>
+              <button class="bopt" onclick="botStep('tiempo')">⏱️ ¿Cuánto tarda el servicio?</button>
+              <button class="bopt" onclick="botStep('cita')">📅 ¿Necesito cita previa?</button>
+              <button class="bopt" onclick="botStep('ubicacion')">📍 ¿Dónde están?</button>
+            </div>
+          </div>
         </div>
-        <p class="testimonial-text">"Me cambiaron los amortiguadores delanteros y traseros. El carro maneja como nuevo. Lo que más valoro es que me explicaron todo antes de empezar y el precio fue el que acordamos, sin sorpresas."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">L</div>
+        <div class="bot-ft">
+          <input class="bot-inp" placeholder="Selecciona una pregunta..." readonly>
+          <button class="bot-sb">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="stag">Respuestas rápidas</div>
+      <h2 class="stitle" style="margin-bottom:2rem">Lo más<br><em>preguntado</em></h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            💰 ¿Cuánto cuestan los servicios?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">Los precios varían según el vehículo y el servicio requerido. Escríbenos por WhatsApp con el modelo y año de tu auto para darte una cotización exacta sin compromiso.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            🕗 ¿Cuál es el horario de atención?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">Atendemos de Lunes a Viernes de 8:00 am a 7:00 pm y Sábados de 8:00 am a 3:00 pm. Te recomendamos agendar por WhatsApp para evitar espera.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            ⏱️ ¿Cuánto tiempo tarda la alineación y balanceo?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">La alineación y balanceo generalmente se realiza en 45–60 minutos. El servicio de frenos o suspensión puede tomar más tiempo según el trabajo requerido. La mayoría se termina el mismo día.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            📅 ¿Necesito hacer cita previa?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">Se recomienda agendar por WhatsApp antes de llegar para garantizar tu lugar y reducir el tiempo de espera. En ocasiones podemos atenderte de inmediato.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            🔩 ¿Trabajan con todo tipo de vehículos?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">Sí, atendemos autos, camionetas, SUVs y pickups de todas las marcas: Chevrolet, Nissan, Toyota, Ford, VW, Honda, Kia, Hyundai, SEAT, Mazda y más.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            ✅ ¿Dan garantía en el servicio?
+            <span class="faq-ic">+</span>
+          </div>
+          <div class="faq-a">Sí. Todos nuestros trabajos cuentan con garantía en mano de obra y en las refacciones instaladas. Si tienes algún inconveniente, regresa y lo resolvemos sin costo adicional.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONTACTO ══ -->
+<section class="section contact-section" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="stag">Ubicación y contacto</div>
+      <h2 class="stitle">Visítanos en<br><em>Querétaro</em></h2>
+      <p class="ssub">Estamos en El Romerillal, con fácil acceso desde cualquier punto de Santiago de Querétaro.</p>
+      <div class="loc-items">
+        <div class="loc-item">
+          <div class="loc-ico">📍</div>
           <div>
-            <div class="author-name">Laura Hernández</div>
-            <div class="author-role">Cliente desde 2021</div>
+            <strong>Dirección</strong>
+            <span>El Romerillal, C.P. 76118<br>Santiago de Querétaro, Qro.</span>
           </div>
         </div>
-      </div>
-
-      <div class="testimonial-card reveal">
-        <div class="stars">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-        </div>
-        <p class="testimonial-text">"Ya tengo varios años trayendo mis dos carros aquí. Siempre me atienden rápido, los precios son honestos y el trabajo dura. Los recomiendo con toda la confianza a familia y amigos en Querétaro."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">M</div>
+        <div class="loc-item">
+          <div class="loc-ico">🕗</div>
           <div>
-            <div class="author-name">Miguel Ángel Torres</div>
-            <div class="author-role">Cliente desde 2017</div>
+            <strong>Horario</strong>
+            <span>Lunes – Viernes: 8:00 am – 7:00 pm<br>Sábado: 8:00 am – 3:00 pm</span>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-ico">📞</div>
+          <div>
+            <strong>Teléfono y WhatsApp</strong>
+            <span>442 100 0000</span>
           </div>
         </div>
       </div>
-
+      <a class="btn-wapp"
+         href="https://wa.me/5214421000000?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
+         target="_blank">
+        💬 Agendar por WhatsApp
+      </a>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.2!2d-100.395!3d20.589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zEl+Romerillal%2C+Santiago+de+Quer%C3%A9taro!5e0!3m2!1ses!2smx!4v1234567890"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación Suspensiones Los Ángeles">
+      </iframe>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ FAQ ══════════════════════════════════ -->
-<section id="faq" class="section">
-  <div class="container faq-inner">
-
-    <div class="faq-info reveal">
-      <div class="section-tag">Preguntas frecuentes</div>
-      <h2 class="section-title">Resolvemos tus dudas</h2>
-      <p class="section-subtitle">
-        Encuentra respuesta a las preguntas más comunes sobre nuestros servicios. Si no encuentras lo que buscas, escríbenos por WhatsApp.
-      </p>
-      <div class="faq-contact-card">
-        <p>¿Tienes una duda que no está aquí? Nuestro equipo responde de inmediato por WhatsApp.</p>
-        <a href="https://wa.me/5214421000000?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20mis%20frenos%2Fsuspensi%C3%B3n"
-           class="btn btn-whatsapp" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Preguntar ahora
-        </a>
-      </div>
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="ft-name">Suspensiones <span>Los Ángeles</span></div>
+      <div class="ft-sub">Especialistas en suspensión · Santiago de Querétaro, Qro.</div>
+      <p class="ft-desc">Más de 15 años cuidando la seguridad de conductores queretanos. Calidad, honestidad y garantía real en cada servicio.</p>
     </div>
-
-    <div class="faq-list reveal">
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Cada cuánto debo hacer la alineación de mi vehículo?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Se recomienda cada 10,000 km o cuando notes que el volante jala hacia un lado, hay desgaste irregular en las llantas, o después de golpes fuertes. También es ideal hacerla al montar llantas nuevas.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Qué diferencia hay entre alineación y balanceo?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          La <strong>alineación</strong> corrige los ángulos de las ruedas respecto al chasis para que el carro vaya recto. El <strong>balanceo</strong> distribuye el peso de forma uniforme alrededor de la rueda para eliminar vibraciones. Se complementan y recomendamos hacerlos juntos.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Cómo sé si mis amortiguadores están en mal estado?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Señales claras: el vehículo rebota mucho al pasar topes, hay balanceo excesivo en curvas, el frente se hunde al frenar, desgaste irregular en llantas o golpeteos al circular en caminos irregulares. Visítanos para una revisión sin costo.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Cuándo debo cambiar las balatas o pastillas de freno?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Revísalas cada 20,000–30,000 km. Señales de cambio urgente: chirrido al frenar, pedal esponjoso o más bajo de lo normal, el carro jala hacia un lado al frenar o el testigo de frenos en el tablero se enciende.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Cuánto tiempo toma el servicio de suspensión y alineación?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Alineación y balanceo normalmente toman entre 45 min y 1 hora. Si se requiere reparación de suspensión el tiempo varía según las piezas. Agenda por WhatsApp para minimizar tu tiempo de espera.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Trabajan con todas las marcas y modelos?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Sí. Atendemos autos compactos, sedanes, SUVs, camionetas y pickups de todas las marcas: Chevrolet, Nissan, Toyota, Ford, Volkswagen, Honda, Kia, Hyundai, SEAT, Mazda y más. Contamos con equipo y refacciones para la mayoría de modelos del mercado mexicano.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ¿Tienen garantía en los servicios?
-          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-answer">
-          Sí. Todos nuestros trabajos tienen garantía de mano de obra. Las refacciones instaladas son de marcas reconocidas y cuentan con garantía de fabricante. Si tienes algún inconveniente, regresa con nosotros y lo revisamos sin costo adicional.
-        </div>
-      </div>
-
+    <div class="ft-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li>Alineación</li>
+        <li>Balanceo de ruedas</li>
+        <li>Sistema de frenos</li>
+        <li>Suspensión completa</li>
+        <li>Suspensión y Alineación</li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>📍 El Romerillal, Querétaro 76118</li>
+        <li>📞 442 100 0000</li>
+        <li>💬 WhatsApp disponible</li>
+        <li>Lun–Vie: 8am–7pm · Sáb: 8am–3pm</li>
+      </ul>
     </div>
   </div>
-</section>
-
-<!-- ══════════════════════ CONTACT / UBICACIÓN ═════════════════ -->
-<section id="contact" class="section">
-  <div class="container contact-inner">
-
-    <div class="contact-info reveal">
-      <div class="section-tag">Ubicación y contacto</div>
-      <h2 class="section-title">Visítanos en Querétaro</h2>
-      <p class="section-subtitle">Estamos en El Romerillal, fácil acceso desde cualquier punto de Santiago de Querétaro.</p>
-
-      <div class="contact-item">
-        <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
-        <div class="contact-item-text">
-          <strong>Dirección</strong>
-          <span>El Romerillal, C.P. 76118<br/>Santiago de Querétaro, Qro.</span>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
-        <div class="contact-item-text">
-          <strong>Horario de atención</strong>
-          <span>Lunes – Viernes: 8:00 am – 7:00 pm<br/>Sábado: 8:00 am – 3:00 pm</span>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
-        <div class="contact-item-text">
-          <strong>Teléfono</strong>
-          <span>442 100 0000</span>
-        </div>
-      </div>
-
-      <div class="contact-item">
-        <div class="contact-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
-        <div class="contact-item-text">
-          <strong>WhatsApp</strong>
-          <span>Respuesta inmediata – agenda tu cita en segundos</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-right reveal">
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.2!2d-100.395!3d20.589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zEl+Romerillal%2C+Santiago+de+Quer%C3%A9taro!5e0!3m2!1ses!2smx!4v1234567890"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación Suspensiones Los Ángeles – El Romerillal, Querétaro">
-        </iframe>
-      </div>
-      <div class="wa-card">
-        <div class="wa-card-text">
-          <strong>¿Listo para agendar tu cita?</strong>
-          <span>Escríbenos y te atendemos de inmediato</span>
-        </div>
-        <a href="https://wa.me/5214421000000?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
-           class="btn btn-whatsapp" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp"></i> Enviar mensaje
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════ FOOTER ═══════════════════════════════ -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-        <div class="footer-brand-logo">
-          <div class="nav-logo-icon"><i class="fa-solid fa-car-burst"></i></div>
-          <div class="nav-logo-text">
-            <span>Suspensiones Los Ángeles</span>
-            <span>Especialistas · Querétaro</span>
-          </div>
-        </div>
-        <p>Más de 15 años cuidando la seguridad de conductores queretanos. Trabajamos con honestidad, calidad y garantía real en cada servicio.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/5214421000000" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>Servicios</h4>
-        <ul>
-          <li><a href="#services">Alineación computarizada</a></li>
-          <li><a href="#services">Balanceo electrónico</a></li>
-          <li><a href="#services">Sistema de frenos</a></li>
-          <li><a href="#services">Suspensión</a></li>
-          <li><a href="#services">Suspensión y Alineación</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Información</h4>
-        <ul>
-          <li><a href="#about">Quiénes somos</a></li>
-          <li><a href="#testimonials">Testimonios</a></li>
-          <li><a href="#faq">Preguntas frecuentes</a></li>
-          <li><a href="#contact">Ubicación</a></li>
-          <li><a href="https://wa.me/5214421000000" target="_blank" rel="noopener">Agendar por WhatsApp</a></li>
-        </ul>
-      </div>
-
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Suspensiones Los Ángeles — El Romerillal, Santiago de Querétaro, Qro. 76118</p>
-      <p>Todos los derechos reservados</p>
-    </div>
+  <div class="footer-bottom">
+    <span>© 2026 Suspensiones Los Ángeles — El Romerillal, Santiago de Querétaro, Qro. 76118</span>
+    <a href="https://wa.me/5214421000000" target="_blank">💬 WhatsApp: 442 100 0000</a>
   </div>
 </footer>
 
-<!-- ══════════════════════ WHATSAPP FLOAT ══════════════════════ -->
-<a class="wa-float"
-   href="https://wa.me/5214421000000?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
-   target="_blank" rel="noopener" title="Chatea por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+<!-- ══ FLOAT WA ══ -->
+<div class="wa-fab">
+  <div class="wa-fab-tip">¡Agenda tu cita! 🔧</div>
+  <a class="wa-fab-btn"
+     href="https://wa.me/5214421000000?text=Hola%2C%20quiero%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles"
+     target="_blank" aria-label="WhatsApp">💬</a>
+</div>
 
-<!-- ══════════════════════ SCROLL TOP ══════════════════════════ -->
-<button id="scroll-top" aria-label="Volver arriba"><i class="fa-solid fa-chevron-up"></i></button>
-
-<!-- ══════════════════════ JAVASCRIPT ══════════════════════════ -->
+<!-- ══ JS ══ -->
 <script>
-  /* ── Navbar scroll ───────────────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+  const WA = '5214421000000';
 
-  /* ── Hamburger ───────────────────────────────────────────── */
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open', open);
-  });
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    });
-  });
-  document.addEventListener('click', (e) => {
-    if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 40) {
+      nav.style.top = '0';
+      nav.classList.add('scrolled');
+    } else {
+      nav.style.top = '32px';
+      nav.classList.remove('scrolled');
     }
   });
 
-  /* ── Scroll reveal ───────────────────────────────────────── */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 90);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
 
-  /* ── Scroll-to-top ───────────────────────────────────────── */
-  const scrollTopBtn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  const ANSWERS = {
+    precios: {
+      q: '💰 ¿Cuánto cobran los servicios?',
+      a: 'Los precios dependen del tipo de vehículo y servicio. Te recomendamos cotizar por WhatsApp con el modelo y año de tu auto para darte un precio exacto. 🚗',
+      opts: [{ l: '💬 Cotizar por WhatsApp', a: 'wa_cotizar' }, { l: '🔙 Más preguntas', a: 'reset' }]
+    },
+    horario: {
+      q: '🕗 ¿Cuál es el horario?',
+      a: '📅 Lunes – Viernes: 8:00 am – 7:00 pm\n🗓️ Sábado: 8:00 am – 3:00 pm\n\nTe recomendamos agendar por WhatsApp para evitar tiempos de espera.',
+      opts: [{ l: '🔙 Más preguntas', a: 'reset' }]
+    },
+    tiempo: {
+      q: '⏱️ ¿Cuánto tarda el servicio?',
+      a: '⏱️ Alineación y balanceo: 45–60 min.\n🛑 Frenos: 1–2 horas.\n🔩 Suspensión: según el trabajo.\n\nLa mayoría de los servicios se termina el mismo día.',
+      opts: [{ l: '📅 Agendar cita', a: 'wa_cita' }, { l: '🔙 Más preguntas', a: 'reset' }]
+    },
+    cita: {
+      q: '📅 ¿Necesito cita previa?',
+      a: 'Se recomienda agendar por WhatsApp antes de llegar para garantizar atención inmediata y reducir tiempos de espera. 👍',
+      opts: [{ l: '💬 Agendar por WhatsApp', a: 'wa_cita' }, { l: '🔙 Más preguntas', a: 'reset' }]
+    },
+    ubicacion: {
+      q: '📍 ¿Dónde están ubicados?',
+      a: '📍 El Romerillal, C.P. 76118\nSantiago de Querétaro, Qro.\n\nPuedes ver la ubicación exacta en el mapa al final de esta página 👇',
+      opts: [{ l: '🗺️ Ver en el mapa', a: 'mapa' }, { l: '🔙 Más preguntas', a: 'reset' }]
+    },
+    wa_cotizar: { wapp: 'Hola%2C%20quiero%20cotizar%20un%20servicio%20en%20Suspensiones%20Los%20%C3%81ngeles.%20Mi%20veh%C3%ADculo%20es%3A%20' },
+    wa_cita:    { wapp: 'Hola%2C%20quiero%20agendar%20una%20cita%20en%20Suspensiones%20Los%20%C3%81ngeles' },
+    mapa: null,
+    reset: null,
+  };
 
-  /* ── Active nav highlight ────────────────────────────────── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? '#ffffff' : '';
-    });
-  }, { passive: true });
-
-  /* ── FAQ accordion ───────────────────────────────────────── */
-  function toggleFaq(btn) {
-    const answer = btn.nextElementSibling;
-    const isOpen = answer.classList.contains('open');
-    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
-    if (!isOpen) {
-      answer.classList.add('open');
-      btn.classList.add('open');
+  function botStep(action) {
+    document.querySelectorAll('.bopts').forEach(e => e.remove());
+    if (action === 'reset') {
+      addBotMsg('¿En qué más te ayudo? 🔧', false, [
+        { l: '💰 ¿Cuánto cobran los servicios?', a: 'precios' },
+        { l: '🕗 ¿Cuál es el horario?', a: 'horario' },
+        { l: '⏱️ ¿Cuánto tarda el servicio?', a: 'tiempo' },
+        { l: '📅 ¿Necesito cita previa?', a: 'cita' },
+        { l: '📍 ¿Dónde están?', a: 'ubicacion' },
+      ]);
+      return;
     }
+    if (action === 'mapa') {
+      addBotMsg('🗺️ Ver en el mapa', true);
+      setTimeout(() => {
+        addBotMsg('Aquí puedes ver nuestra ubicación 👇');
+        document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+      return;
+    }
+    const d = ANSWERS[action];
+    if (!d) return;
+    if (d.wapp) { window.open(`https://wa.me/${WA}?text=${d.wapp}`, '_blank'); return; }
+    addBotMsg(d.q, true);
+    setTimeout(() => addBotMsg(d.a, false, d.opts), 500);
+  }
+
+  function addBotMsg(text, isUser = false, opts = null) {
+    const body = document.getElementById('bot-msgs');
+    const m = document.createElement('div');
+    m.className = 'bm' + (isUser ? ' u' : '');
+    const t = new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+    m.innerHTML = text.replace(/\n/g, '<br>') + `<div class="bts">${t}</div>`;
+    if (opts) {
+      const w = document.createElement('div'); w.className = 'bopts';
+      opts.forEach(o => {
+        const b = document.createElement('button');
+        b.className = 'bopt'; b.textContent = o.l;
+        b.onclick = () => botStep(o.a);
+        w.appendChild(b);
+      });
+      m.appendChild(w);
+    }
+    body.appendChild(m);
+    body.scrollTop = body.scrollHeight;
   }
 </script>
 </body>
